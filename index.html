@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing FAB</title>
+    <style>
+        /* Basic styling for the FAB */
+        #fab {
+            position: absolute;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        /* Ensure the body takes up full height for movement */
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The Floating Action Button -->
+    <button id="fab"></button>
+
+    <script>
+        const button = document.getElementById('fab');
+        let posX = Math.random() * window.innerWidth;
+        let posY = Math.random() * window.innerHeight;
+        let velocityX = 5;  // Horizontal speed
+        let velocityY = 5;  // Vertical speed
+
+        function moveButton() {
+            // Update button position
+            posX += velocityX;
+            posY += velocityY;
+
+            // Check for collisions with the window edges
+            if (posX + button.offsetWidth >= window.innerWidth || posX <= 0) {
+                velocityX = -velocityX;  // Reverse horizontal direction
+            }
+            if (posY + button.offsetHeight >= window.innerHeight || posY <= 0) {
+                velocityY = -velocityY;  // Reverse vertical direction
+            }
+
+            // Apply the new position to the button
+            button.style.left = posX + 'px';
+            button.style.top = posY + 'px';
+        }
+
+        // Move the button at a regular interval
+        setInterval(moveButton, 20);
+
+        // Initial placement of the button
+        moveButton();
+    </script>
+
+</body>
+</html>
