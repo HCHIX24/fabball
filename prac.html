@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+</head>
+<body>
+    <button onclick="multiT()">Generate Table</button>
+    <div id="display"></div>
+
+    <script>
+        function multiT() {
+            let strTemp = "<table border='1'>";
+            for (let row = 1; row <= 10; row++) {
+                strTemp += "<tr>";
+                for (let col = 1; col <= 10; col++) {
+                    strTemp += `<td> ${row * col} </td>`;
+                }
+                strTemp += "</tr>";
+            }
+            strTemp += "</table>";
+            console.log(strTemp);
+            display.innerHTML=strTemp;
+        }
+    </script>
+</body>
+</html>
